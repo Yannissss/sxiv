@@ -378,7 +378,7 @@ void update_info(void)
 		}
 		if (img.gamma != 0)
 			bar_put(r, "G%+d" BAR_SEP, img.gamma);
-		bar_put(r, "%3d%%" BAR_SEP, (int) (img.zoom * 100.0));
+		bar_put(r, "%d/%d (%d%%)" BAR_SEP, img.w, img.h,(int) (img.zoom * 100.0));
 		if (img.multi.cnt > 0) {
 			for (fn = 0, i = img.multi.cnt; i > 0; fn++, i /= 10);
 			bar_put(r, "%0*d/%d" BAR_SEP, fn, img.multi.sel + 1, img.multi.cnt);
