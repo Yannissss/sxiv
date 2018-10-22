@@ -21,6 +21,7 @@
 #include "config.h"
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -134,6 +135,21 @@ bool cg_reload_image(arg_t _)
 
 bool cg_remove_image(arg_t _)
 {
+	remove_file(fileidx, true);
+	if (mode == MODE_IMAGE)
+		load_image(fileidx);
+	else
+		tns.dirty = true;
+	return true;
+}
+
+bool cg_delete_image(arg_t _)
+{
+	printf("Deleting: %s ", files[fileidx].name);
+	if (remove(files[fileidx].name) == 0)
+		printf("OK\n");
+	else
+		printf("ERR\n");
 	remove_file(fileidx, true);
 	if (mode == MODE_IMAGE)
 		load_image(fileidx);
