@@ -64,6 +64,7 @@ void img_init(img_t *img, win_t *win)
 	img->aa = ANTI_ALIAS;
 	img->alpha = ALPHA_LAYER;
 	img->multi.cap = img->multi.cnt = 0;
+	// Animate hack
 	img->multi.animate = options->animate;
 	img->multi.framedelay = options->framerate > 0 ? 1000 / options->framerate : 0;
 	img->multi.length = 0;
